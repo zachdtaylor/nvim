@@ -127,6 +127,11 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
+-- Folds are enabled but open by default
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldlevel = 20
+
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
