@@ -202,6 +202,10 @@ vim.keymap.set('i', '<D-s>', '<Esc><cmd>w<CR>', { desc = 'Save' })
 
 vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
 
+vim.keymap.set('n', '<leader>td', function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { silent = true, noremap = true, desc = '[T]oggle [D]iagnostics' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
