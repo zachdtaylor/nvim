@@ -290,6 +290,7 @@ require('lazy').setup({
       view_options = { show_hidden = true },
       extensions = { 'oil_git_status' },
       win_options = { signcolumn = 'yes:2' },
+      watch_for_changes = true,
     },
     dependencies = { { 'echasnovski/mini.icons', opts = {} } },
     lazy = false,
@@ -496,12 +497,17 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          mappings = {
+            i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          },
+          file_ignore_patterns = { '.git/' },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
