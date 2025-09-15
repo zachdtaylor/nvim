@@ -202,6 +202,9 @@ vim.keymap.set('i', '<D-s>', '<Esc><cmd>w<CR>', { desc = 'Save' })
 
 vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
 
+vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { desc = 'Copy current file path' })
+vim.keymap.set('n', '<Leader>cr', ":let @+=expand('%:.')<CR>", { desc = 'Copy current file path (relative)' })
+
 vim.keymap.set('n', '<leader>td', function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { silent = true, noremap = true, desc = '[T]oggle [D]iagnostics' })
