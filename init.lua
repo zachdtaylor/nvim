@@ -1026,6 +1026,37 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    opts = {
+      transparent_background = true,
+      term_colors = true,
+      styles = {
+        comments = { 'italic' },
+        functions = { 'bold' },
+        keywords = { 'bold' },
+        strings = { 'italic' },
+        variables = {},
+      },
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        barbar = true,
+        which_key = true,
+      },
+      -- You can specify the default flavor here, but we'll manage it with a function
+      -- flavour = 'latte', -- This is the light variant
+    },
+    config = function(_, opts)
+      require('catppuccin').setup(opts)
+      -- Do NOT set the colorscheme here initially.
+    end,
+  },
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -1162,6 +1193,24 @@ require('lazy').setup({
     },
   },
 })
+
+vim.g.current_colorscheme = 'catppuccin'
+
+function _G.toggle_colorscheme()
+  if vim.g.current_colorscheme == 'cyberdream' then
+    vim.g.current_colorscheme = 'catppuccin'
+    vim.cmd.colorscheme 'catppuccin-latte'
+    vim.notify('Switched to Catppuccin', vim.log.levels.INFO, { title = 'Colorscheme' })
+  else
+    vim.g.current_colorscheme = 'cyberdream'
+    vim.cmd.colorscheme 'cyberdream'
+    vim.notify('Switched to Cyberdream', vim.log.levels.INFO, { title = 'Colorscheme' })
+  end
+end
+
+vim.cmd.colorscheme(vim.g.current_colorscheme)
+
+vim.keymap.set('n', '<leader>tc', ':lua toggle_colorscheme()<CR>', { desc = '[T]oggle [C]olorscheme' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
