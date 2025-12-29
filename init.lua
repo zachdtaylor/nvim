@@ -205,6 +205,14 @@ vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
 vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { desc = 'Copy current file path' })
 vim.keymap.set('n', '<Leader>cr', ":let @+=expand('%:.')<CR>", { desc = 'Copy current file path (relative)' })
 
+vim.keymap.set('n', '<leader>sy', '<C-w>v', { desc = '(S)plit window vertically' })
+vim.keymap.set('n', '<leader>sx', '<C-w>s', { desc = '(S)plit window horizontally' })
+
+vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = '(W)indow left' })
+vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = '(W)indow right' })
+vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = '(W)indow down' })
+vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = '(W)indow up' })
+
 vim.keymap.set('n', '<leader>td', function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { silent = true, noremap = true, desc = '[T]oggle [D]iagnostics' })
